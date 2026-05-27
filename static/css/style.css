@@ -151,10 +151,18 @@ body {
   margin: 1rem 0;
 }
 
+/* Force all table cells (header + body) to center horizontally
+   and vertically. Vertical centering matters for rowspan cells
+   like "T.R. (%)" and "S.R. (%)". */
+.table th,
+.table td {
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+
 .table thead th {
   background-color: #f5f5f5;
   font-weight: 600;
-  vertical-align: middle;
 }
 
 .table-caption {
