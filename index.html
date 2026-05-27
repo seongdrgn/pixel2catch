@@ -141,38 +141,20 @@
   </div>
 </section>
 
-<!-- ==================== VIDEO ==================== -->
+<!-- ==================== VIDEO (Overview, YouTube) ==================== -->
 <section class="section" id="video">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Real-World Demonstrations</h2>
-    <p class="has-text-centered video-intro">
-      The proposed Pixel2Catch policy is transferred directly from simulation to the
-      real robot without fine-tuning, catching three differently shaped objects thrown
-      by a human.
-    </p>
-    <div class="columns is-centered video-grid">
-      <div class="column">
-        <h4 class="title is-6 has-text-centered">Cube</h4>
-        <video controls loop muted playsinline preload="metadata" class="demo-video">
-          <source src="static/videos/cube.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="column">
-        <h4 class="title is-6 has-text-centered">L-block</h4>
-        <video controls loop muted playsinline preload="metadata" class="demo-video">
-          <source src="static/videos/L.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="column">
-        <h4 class="title is-6 has-text-centered">Triangle</h4>
-        <video controls loop muted playsinline preload="metadata" class="demo-video">
-          <source src="static/videos/tri.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+    <h2 class="title is-3 has-text-centered">Overview Video</h2>
+    <div class="publication-video">
+      <!-- Replace [VIDEO-ID] with the YouTube video ID once the overview
+           video has been uploaded (e.g., dQw4w9WgXcQ). -->
+      <iframe src="https://www.youtube.com/embed/[VIDEO-ID]"
+              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
     </div>
+    <p class="has-text-centered video-caption">
+      Overview of Pixel2Catch: method, training in simulation, and real-world results.
+    </p>
   </div>
 </section>
 
@@ -287,6 +269,38 @@
         transferred from simulation to the real robot without any fine-tuning.
       </figcaption>
     </figure>
+
+    <!-- Real-World Demonstrations (3 self-hosted MP4s), moved here from
+         the top "Video" section. -->
+    <h3 class="title is-5">Real-World Demonstrations</h3>
+    <p class="video-intro">
+      The proposed Pixel2Catch policy is transferred directly from simulation to the
+      real robot without fine-tuning, catching three differently shaped objects thrown
+      by a human.
+    </p>
+    <div class="columns is-centered video-grid">
+      <div class="column">
+        <h4 class="title is-6 has-text-centered">Cube</h4>
+        <video controls loop muted playsinline preload="metadata" class="demo-video">
+          <source src="static/videos/cube.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="column">
+        <h4 class="title is-6 has-text-centered">L-block</h4>
+        <video controls loop muted playsinline preload="metadata" class="demo-video">
+          <source src="static/videos/L.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="column">
+        <h4 class="title is-6 has-text-centered">Triangle</h4>
+        <video controls loop muted playsinline preload="metadata" class="demo-video">
+          <source src="static/videos/tri.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
 
     <h3 class="title is-5">Real-World Performance (360 trials per policy)</h3>
     <div class="table-container">
