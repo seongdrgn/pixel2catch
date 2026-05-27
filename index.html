@@ -1,1 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixel2Catch: Multi-Agent Sim-to-Real Transfer for Agile Manipulation with a Single RGB Camera</title>
+  <meta name="description" content="Pixel2Catch — RGB-only robotic catching with multi-agent reinforcement learning. IEEE RA-L 2026.">
+  <meta name="keywords" content="robotics, reinforcement learning, sim-to-real, manipulation, catching, multi-agent, RGB, SAM2, RA-L">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pixel2Catch: Multi-Agent Sim-to-Real Transfer for Agile Manipulation with a Single RGB Camera">
+  <meta property="og:description" content="An RGB-only robotic catching system without explicit 3D position estimation. IEEE RA-L 2026.">
+  <meta property="og:image" content="static/images/teaser.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro|Roboto+Mono" rel="stylesheet">
+
+  <!-- Bulma + FontAwesome (Nerfies-style stack) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- Custom -->
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <p class="venue-badge">IEEE Robotics and Automation Letters (RA-L) 2026</p>
+
+          <h1 class="title is-2 publication-title">
+            Pixel2Catch:<br>
+            Multi-Agent Sim-to-Real Transfer for Agile Manipulation<br>
+            with a Single RGB Camera
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="#">Seongyong Kim</a>,</span>
+            <span class="author-block"><a href="#">Junhyeon Cho</a>,</span>
+            <span class="author-block"><a href="#">Kang-Won Lee</a>,</span>
+            <span class="author-block"><a href="#">Soo-Chul Lim</a><sup>&#9993;</sup></span>
+          </div>
+
+          <div class="is-size-6 publication-affiliations">
+            <span class="affiliation">
+              Department of Mechanical Engineering, Dongguk University, Seoul, South Korea
+            </span>
+            <br>
+            <span class="corresponding">
+              <sup>&#9993;</sup> Corresponding author: <a href="mailto:limsc@dongguk.edu">limsc@dongguk.edu</a>
+            </span>
+          </div>
+
+          <!-- Buttons -->
+          <div class="publication-links">
+            <span class="link-block">
+              <a href="[PAPER-PDF-URL]" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="[ARXIV-URL]" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="ai ai-arxiv"></i></span>
+                <span>arXiv</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/seongdrgn/pixel2catch" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="[VIDEO-URL]" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fab fa-youtube"></i></span>
+                <span>Video</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="#bibtex" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-quote-left"></i></span>
+                <span>BibTeX</span>
+              </a>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TEASER ==================== -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="static/images/teaser.jpg" alt="Pixel2Catch teaser figure" class="teaser-img">
+      <h2 class="subtitle has-text-centered">
+        <strong>Pixel2Catch</strong> infers object motion from pixel-level features in image space —
+        no 3D position required. Policies trained in simulation transfer directly to a real robot
+        equipped with a multi-fingered hand and a single RGB camera.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ABSTRACT ==================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            To catch a thrown object, a robot must be able to perceive the object's motion and
+            generate control actions in a timely manner. Rather than explicitly estimating the
+            object's 3D position, this work focuses on a novel approach that recognizes object
+            motion using pixel-level visual information extracted from a single RGB image. Such
+            visual cues capture changes in the object's position and scale, allowing the policy
+            to reason about the object's motion.
+          </p>
+          <p>
+            Furthermore, to achieve stable learning in a high-DoF system composed of a robot arm
+            equipped with a multi-fingered hand, we design a heterogeneous multi-agent
+            reinforcement learning framework that defines the arm and hand as independent agents
+            with distinct roles. Each agent is trained cooperatively using role-specific
+            observations and rewards, and the learned policies are successfully transferred from
+            simulation to the real world.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== VIDEO ==================== -->
+<section class="section" id="video">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Video</h2>
+    <div class="publication-video">
+      <!-- Replace VIDEO_ID with your YouTube ID, or remove this iframe and embed an mp4 below -->
+      <iframe src="https://www.youtube.com/embed/[VIDEO-ID]"
+              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
+    <p class="has-text-centered video-caption">
+      Real-world demonstrations of Pixel2Catch catching various objects thrown by a human.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== METHOD ==================== -->
+<section class="section" id="method">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Method</h2>
+
+    <h3 class="title is-5">Heterogeneous Multi-Agent Framework</h3>
+    <div class="content has-text-justified">
+      <p>
+        The robot arm and the multi-fingered hand are modeled as <em>independent agents</em> with
+        role-specific observations and rewards. The arm agent (<span class="math">&pi;<sub>arm</sub></span>)
+        focuses on positioning the end-effector to reach the thrown object, while the hand agent
+        (<span class="math">&pi;<sub>hand</sub></span>) concentrates on forming stable grasps during
+        the catching phase. Both policies are trained cooperatively with MAPPO under the
+        Centralized Training with Decentralized Execution (CTDE) paradigm.
+      </p>
+    </div>
+    <figure class="figure has-text-centered">
+      <img src="static/images/system_overview.jpg" alt="System overview" class="method-img">
+      <figcaption>
+        Pipeline of the system and experimental setup. Each policy operates on selected
+        observations from two consecutive timesteps. Privileged information is used only during
+        value network training. A single RGB camera is mounted 0.5 m behind and 2.2 m above the
+        robot.
+      </figcaption>
+    </figure>
+
+    <h3 class="title is-5">Pixel-Level Features from a Single RGB Image</h3>
+    <div class="content has-text-justified">
+      <p>
+        Instead of explicit 3D position estimation, we extract <em>pixel-level features</em> from
+        a single RGB image: the center coordinates
+        <span class="math">(c<sub>x</sub>, c<sub>y</sub>)</span>, width
+        <span class="math">w</span>, height <span class="math">h</span>, and their temporal
+        differences. The center motion encodes the object's apparent direction; the
+        width/height scale change encodes relative distance. SAM2 is used for robust object
+        segmentation under varying lighting and backgrounds.
+      </p>
+    </div>
+    <figure class="figure has-text-centered">
+      <img src="static/images/pixel_features.jpg" alt="Pixel-level features" class="method-img">
+      <figcaption>
+        Pixel-level features extracted from simulation and real-world RGB frames. The same
+        feature definition transfers across the sim-to-real gap.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ==================== SIMULATION RESULTS ==================== -->
+<section class="section" id="results-sim">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Simulation Results</h2>
+
+    <figure class="figure has-text-centered">
+      <img src="static/images/training_curves.jpg" alt="Training curves" class="method-img">
+      <figcaption>
+        Tracking and success rates over training, averaged over 3 seeds. Pixel-level features
+        substantially outperform position-only baselines.
+      </figcaption>
+    </figure>
+
+    <h3 class="title is-5">Performance on Seen and Unseen Objects (averaged over 3 seeds)</h3>
+    <div class="table-container">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth has-text-centered">
+        <thead>
+          <tr>
+            <th rowspan="2">Metric</th>
+            <th rowspan="2">Method</th>
+            <th colspan="2">Objects</th>
+          </tr>
+          <tr><th>Seen</th><th>Unseen</th></tr>
+        </thead>
+        <tbody>
+          <tr><td rowspan="6">T.R. (%)</td>
+              <td>w/o PF</td>     <td>12.13 &plusmn; 1.27</td><td>12.11 &plusmn; 1.90</td></tr>
+          <tr><td>Only-WH</td>    <td>8.03 &plusmn; 0.60</td> <td>6.11 &plusmn; 0.35</td></tr>
+          <tr><td>Only-Center</td><td>87.07 &plusmn; 1.62</td><td>87.50 &plusmn; 1.53</td></tr>
+          <tr><td>S-A RL</td>     <td>78.20 &plusmn; 1.32</td><td>75.83 &plusmn; 2.00</td></tr>
+          <tr><td>3D Pos</td>     <td><strong>93.33 &plusmn; 0.55</strong></td><td><strong>91.83 &plusmn; 1.16</strong></td></tr>
+          <tr><td>Proposed</td>   <td>89.97 &plusmn; 0.21</td><td>89.28 &plusmn; 0.79</td></tr>
+
+          <tr><td rowspan="6">S.R. (%)</td>
+              <td>w/o PF</td>     <td>8.93 &plusmn; 1.04</td> <td>7.89 &plusmn; 1.46</td></tr>
+          <tr><td>Only-WH</td>    <td>5.53 &plusmn; 0.51</td> <td>4.00 &plusmn; 0.17</td></tr>
+          <tr><td>Only-Center</td><td>81.27 &plusmn; 0.76</td><td>80.72 &plusmn; 0.38</td></tr>
+          <tr><td>S-A RL</td>     <td>63.50 &plusmn; 0.85</td><td>65.44 &plusmn; 2.25</td></tr>
+          <tr><td>3D Pos</td>     <td><strong>90.43 &plusmn; 1.27</strong></td><td><strong>89.10 &plusmn; 1.39</strong></td></tr>
+          <tr><td>Proposed</td>   <td>84.13 &plusmn; 0.50</td><td>84.83 &plusmn; 1.17</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="has-text-centered table-caption">
+      T.R. = Tracking Rate, S.R. = Success Rate. Bold = best.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== REAL-WORLD ==================== -->
+<section class="section" id="results-real">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Real-World Experiments</h2>
+
+    <figure class="figure has-text-centered">
+      <img src="static/images/real_valid.jpg" alt="Real-world catching sequences" class="method-img">
+      <figcaption>
+        Real-world catching sequences for objects with different geometries. The <em>mono-cam
+        view</em> shows the RGB scene captured by the installed camera; objects are segmented
+        using SAM2 and pixel-level features are provided to the policy as input. Policies are
+        transferred from simulation to the real robot without any fine-tuning.
+      </figcaption>
+    </figure>
+
+    <h3 class="title is-5">Real-World Performance (360 trials per policy)</h3>
+    <div class="table-container">
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth has-text-centered">
+        <thead>
+          <tr>
+            <th rowspan="2">Metric</th>
+            <th rowspan="2">Method</th>
+            <th colspan="3">Objects</th>
+          </tr>
+          <tr><th>Cube</th><th>L-block</th><th>Triangle</th></tr>
+        </thead>
+        <tbody>
+          <tr><td rowspan="5">T.R. (%)</td>
+              <td>Only-WH</td>    <td>0.0 &plusmn; 0.0</td>   <td>0.0 &plusmn; 0.0</td>   <td>0.0 &plusmn; 0.0</td></tr>
+          <tr><td>Only-Center</td><td>44.73 &plusmn; 7.80</td><td>44.80 &plusmn; 7.87</td><td>47.47 &plusmn; 5.15</td></tr>
+          <tr><td>S-A RL</td>     <td>64.67 &plusmn; 9.01</td><td>57.27 &plusmn; 8.76</td><td>61.40 &plusmn; 8.22</td></tr>
+          <tr><td>3D Pos</td>     <td>70.83 &plusmn; 5.69</td><td>65.83 &plusmn; 10.67</td><td>70.00 &plusmn; 6.09</td></tr>
+          <tr><td>Proposed</td>   <td><strong>77.93 &plusmn; 6.56</strong></td><td><strong>76.60 &plusmn; 4.15</strong></td><td><strong>74.67 &plusmn; 7.67</strong></td></tr>
+
+          <tr><td rowspan="5">S.R. (%)</td>
+              <td>Only-WH</td>    <td>0.0 &plusmn; 0.0</td>   <td>0.0 &plusmn; 0.0</td>   <td>0.0 &plusmn; 0.0</td></tr>
+          <tr><td>Only-Center</td><td>15.27 &plusmn; 7.33</td><td>10.60 &plusmn; 8.37</td><td>17.27 &plusmn; 3.52</td></tr>
+          <tr><td>S-A RL</td>     <td>31.27 &plusmn; 5.55</td><td>34.00 &plusmn; 8.63</td><td>30.00 &plusmn; 6.67</td></tr>
+          <tr><td>3D Pos</td>     <td>45.83 &plusmn; 5.00</td><td>44.17 &plusmn; 4.19</td><td>35.83 &plusmn; 5.69</td></tr>
+          <tr><td>Proposed</td>   <td><strong>60.60 &plusmn; 4.30</strong></td><td><strong>51.27 &plusmn; 6.60</strong></td><td><strong>46.60 &plusmn; 4.77</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="has-text-centered table-caption">
+      Results averaged over 360 trials per policy (3 objects &times; 2 throwers &times; 2 backgrounds &times; 30 trials).
+    </p>
+  </div>
+</section>
+
+<!-- ==================== BIBTEX ==================== -->
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <pre><code>@article{kim2026pixel2catch,
+  title   = {Pixel2Catch: Multi-Agent Sim-to-Real Transfer for Agile Manipulation
+             with a Single RGB Camera},
+  author  = {Kim, Seongyong and Cho, Junhyeon and Lee, Kang-Won and Lim, Soo-Chul},
+  journal = {IEEE Robotics and Automation Letters},
+  year    = {2026},
+  note    = {Accepted, to appear}
+}</code></pre>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-centered">
+        <p>
+          <strong>Acknowledgments.</strong>
+          This work was supported by <em>[FUNDING ORGANIZATION / GRANT NUMBER]</em>.
+        </p>
+        <p class="is-size-7" style="margin-top: 0.5em;">
+          Page template adapted from
+          <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+          (Bulma CSS + Academicons).
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
