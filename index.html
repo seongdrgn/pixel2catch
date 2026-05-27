@@ -144,16 +144,35 @@
 <!-- ==================== VIDEO ==================== -->
 <section class="section" id="video">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Video</h2>
-    <div class="publication-video">
-      <!-- Replace VIDEO_ID with your YouTube ID, or remove this iframe and embed an mp4 below -->
-      <iframe src="https://www.youtube.com/embed/[VIDEO-ID]"
-              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-    </div>
-    <p class="has-text-centered video-caption">
-      Real-world demonstrations of Pixel2Catch catching various objects thrown by a human.
+    <h2 class="title is-3 has-text-centered">Real-World Demonstrations</h2>
+    <p class="has-text-centered video-intro">
+      The proposed Pixel2Catch policy is transferred directly from simulation to the
+      real robot without fine-tuning, catching three differently shaped objects thrown
+      by a human.
     </p>
+    <div class="columns is-centered video-grid">
+      <div class="column">
+        <h4 class="title is-6 has-text-centered">Cube</h4>
+        <video controls loop muted playsinline preload="metadata" class="demo-video">
+          <source src="static/videos/cube.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="column">
+        <h4 class="title is-6 has-text-centered">L-block</h4>
+        <video controls loop muted playsinline preload="metadata" class="demo-video">
+          <source src="static/videos/L.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="column">
+        <h4 class="title is-6 has-text-centered">Triangle</h4>
+        <video controls loop muted playsinline preload="metadata" class="demo-video">
+          <source src="static/videos/tri.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
   </div>
 </section>
 
