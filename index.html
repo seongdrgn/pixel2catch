@@ -140,16 +140,15 @@
   </div>
 </section>
 
-<!-- ==================== VIDEO (Overview, YouTube) ==================== -->
+<!-- ==================== VIDEO (Overview, self-hosted) ==================== -->
 <section class="section" id="video">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Overview Video</h2>
     <div class="publication-video">
-      <!-- Replace [VIDEO-ID] with the YouTube video ID once the overview
-           video has been uploaded (e.g., dQw4w9WgXcQ). -->
-      <iframe src="https://www.youtube.com/embed/[VIDEO-ID]"
-              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+      <video controls preload="metadata" playsinline poster="static/images/teaser.jpg">
+        <source src="static/videos/overview.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
     <p class="has-text-centered video-caption">
       Overview of Pixel2Catch: method, training in simulation, and real-world results.
