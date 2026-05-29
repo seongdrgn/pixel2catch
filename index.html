@@ -37,23 +37,24 @@
 
           <h1 class="title is-2 publication-title">
             Pixel2Catch:<br>
-            Multi-Agent Sim-to-Real Transfer for Agile Manipulation with a Single RGB Camera
+            Multi-Agent Sim-to-Real Transfer for Agile Manipulation<br>
+            with a Single RGB Camera
           </h1>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><a href="https://seongdrgn.github.io/">Seongyong Kim</a>,</span>
-            <span class="author-block">Junhyeon Cho,</span>
-            <span class="author-block"><a href="https://lee-kangwon.github.io/">Kang-Won Lee</a>,</span>
-            <span class="author-block"><a href="http://irobot.dgu.edu/wordpress/">Soo-Chul Lim</a><sup>*</sup></span>
+            <span class="author-block"><a href="#">Seongyong Kim</a>,</span>
+            <span class="author-block"><a href="#">Junhyeon Cho</a>,</span>
+            <span class="author-block"><a href="#">Kang-Won Lee</a>,</span>
+            <span class="author-block"><a href="#">Soo-Chul Lim</a><sup>&#9993;</sup></span>
           </div>
 
           <div class="is-size-6 publication-affiliations">
             <span class="affiliation">
-              Dongguk University
+              Department of Mechanical Engineering, Dongguk University, Seoul, South Korea
             </span>
             <br>
             <span class="corresponding">
-              <sup>*</sup>Corresponding author
+              <sup>&#9993;</sup> Corresponding author: <a href="mailto:limsc@dongguk.edu">limsc@dongguk.edu</a>
             </span>
           </div>
 
@@ -72,7 +73,7 @@
               </a>
             </span>
             <span class="link-block">
-              <a href="https://github.com/seongdrgn/pixel2catch" class="external-link button is-normal is-rounded is-dark">
+              <a href="[GITHUB-URL]" class="external-link button is-normal is-rounded is-dark">
                 <span class="icon"><i class="fab fa-github"></i></span>
                 <span>Code</span>
               </a>
@@ -104,8 +105,8 @@
       <img src="static/images/teaser.jpg" alt="Pixel2Catch teaser figure" class="teaser-img">
       <h2 class="subtitle has-text-centered">
         <strong>Pixel2Catch</strong> infers object motion from pixel-level features in image space —
-        no 3D position required. Policies trained in simulation transfer directly to the real robot
-        without fine-tuning.
+        no 3D position required. Policies trained in simulation transfer directly to a real robot
+        equipped with a multi-fingered hand and a single RGB camera.
       </h2>
     </div>
   </div>
@@ -140,18 +141,18 @@
   </div>
 </section>
 
-<!-- ==================== VIDEO (Overview, self-hosted) ==================== -->
+<!-- ==================== VIDEO ==================== -->
 <section class="section" id="video">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Overview Video</h2>
+    <h2 class="title is-3 has-text-centered">Video</h2>
     <div class="publication-video">
-      <video controls preload="metadata" playsinline poster="static/images/overview_poster.jpg">
-        <source src="static/videos/overview.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <!-- Replace VIDEO_ID with your YouTube ID, or remove this iframe and embed an mp4 below -->
+      <iframe src="https://www.youtube.com/embed/[VIDEO-ID]"
+              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
     </div>
     <p class="has-text-centered video-caption">
-      Overview of Pixel2Catch: method, training in simulation, and real-world results.
+      Real-world demonstrations of Pixel2Catch catching various objects thrown by a human.
     </p>
   </div>
 </section>
@@ -235,7 +236,7 @@
           <tr><td>Only-Center</td><td>87.07 &plusmn; 1.62</td><td>87.50 &plusmn; 1.53</td></tr>
           <tr><td>S-A RL</td>     <td>78.20 &plusmn; 1.32</td><td>75.83 &plusmn; 2.00</td></tr>
           <tr><td>3D Pos</td>     <td><strong>93.33 &plusmn; 0.55</strong></td><td><strong>91.83 &plusmn; 1.16</strong></td></tr>
-          <tr><td>Proposed</td>   <td>89.97 &plusmn; 0.21</td><td>89.28 &plusmn; 0.79</td></tr>
+          <tr class="proposed-row"><td>Proposed</td>   <td><span class="near-best">89.97 &plusmn; 0.21</span></td><td><span class="near-best">89.28 &plusmn; 0.79</span></td></tr>
 
           <tr><td rowspan="6">S.R. (%)</td>
               <td>w/o PF</td>     <td>8.93 &plusmn; 1.04</td> <td>7.89 &plusmn; 1.46</td></tr>
@@ -243,12 +244,14 @@
           <tr><td>Only-Center</td><td>81.27 &plusmn; 0.76</td><td>80.72 &plusmn; 0.38</td></tr>
           <tr><td>S-A RL</td>     <td>63.50 &plusmn; 0.85</td><td>65.44 &plusmn; 2.25</td></tr>
           <tr><td>3D Pos</td>     <td><strong>90.43 &plusmn; 1.27</strong></td><td><strong>89.10 &plusmn; 1.39</strong></td></tr>
-          <tr><td>Proposed</td>   <td>84.13 &plusmn; 0.50</td><td>84.83 &plusmn; 1.17</td></tr>
+          <tr class="proposed-row"><td>Proposed</td>   <td><span class="near-best">84.13 &plusmn; 0.50</span></td><td><span class="near-best">84.83 &plusmn; 1.17</span></td></tr>
         </tbody>
       </table>
     </div>
     <p class="has-text-centered table-caption">
-      T.R. = Tracking Rate, S.R. = Success Rate. Bold = best.
+      T.R. = Tracking Rate, S.R. = Success Rate. <strong>Bold</strong> = best; <span class="near-best">underline</span> = comparable to best.
+      Although <em>3D Pos</em> attains the highest rates by using oracle 3D coordinates available only in simulation,
+      the <strong>Proposed</strong> model achieves nearly the same tracking and success rates while relying solely on pixel-level visual cues from RGB.
     </p>
   </div>
 </section>
@@ -268,38 +271,6 @@
       </figcaption>
     </figure>
 
-    <!-- Real-World Demonstrations (3 self-hosted MP4s), moved here from
-         the top "Video" section. -->
-    <h3 class="title is-5">Real-World Demonstrations</h3>
-    <p class="video-intro">
-      The proposed Pixel2Catch policy is transferred directly from simulation to the
-      real robot without fine-tuning, catching three differently shaped objects thrown
-      by a human.
-    </p>
-    <div class="columns is-centered video-grid">
-      <div class="column">
-        <h4 class="title is-6 has-text-centered">Cube</h4>
-        <video controls loop muted playsinline preload="metadata" class="demo-video">
-          <source src="static/videos/cube.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="column">
-        <h4 class="title is-6 has-text-centered">L-block</h4>
-        <video controls loop muted playsinline preload="metadata" class="demo-video">
-          <source src="static/videos/L.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="column">
-        <h4 class="title is-6 has-text-centered">Triangle</h4>
-        <video controls loop muted playsinline preload="metadata" class="demo-video">
-          <source src="static/videos/tri.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-
     <h3 class="title is-5">Real-World Performance (360 trials per policy)</h3>
     <div class="table-container">
       <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth has-text-centered">
@@ -317,19 +288,20 @@
           <tr><td>Only-Center</td><td>44.73 &plusmn; 7.80</td><td>44.80 &plusmn; 7.87</td><td>47.47 &plusmn; 5.15</td></tr>
           <tr><td>S-A RL</td>     <td>64.67 &plusmn; 9.01</td><td>57.27 &plusmn; 8.76</td><td>61.40 &plusmn; 8.22</td></tr>
           <tr><td>3D Pos</td>     <td>70.83 &plusmn; 5.69</td><td>65.83 &plusmn; 10.67</td><td>70.00 &plusmn; 6.09</td></tr>
-          <tr><td>Proposed</td>   <td><strong>77.93 &plusmn; 6.56</strong></td><td><strong>76.60 &plusmn; 4.15</strong></td><td><strong>74.67 &plusmn; 7.67</strong></td></tr>
+          <tr class="proposed-row"><td>Proposed</td>   <td><strong>77.93 &plusmn; 6.56</strong></td><td><strong>76.60 &plusmn; 4.15</strong></td><td><strong>74.67 &plusmn; 7.67</strong></td></tr>
 
           <tr><td rowspan="5">S.R. (%)</td>
               <td>Only-WH</td>    <td>0.0 &plusmn; 0.0</td>   <td>0.0 &plusmn; 0.0</td>   <td>0.0 &plusmn; 0.0</td></tr>
           <tr><td>Only-Center</td><td>15.27 &plusmn; 7.33</td><td>10.60 &plusmn; 8.37</td><td>17.27 &plusmn; 3.52</td></tr>
           <tr><td>S-A RL</td>     <td>31.27 &plusmn; 5.55</td><td>34.00 &plusmn; 8.63</td><td>30.00 &plusmn; 6.67</td></tr>
           <tr><td>3D Pos</td>     <td>45.83 &plusmn; 5.00</td><td>44.17 &plusmn; 4.19</td><td>35.83 &plusmn; 5.69</td></tr>
-          <tr><td>Proposed</td>   <td><strong>60.60 &plusmn; 4.30</strong></td><td><strong>51.27 &plusmn; 6.60</strong></td><td><strong>46.60 &plusmn; 4.77</strong></td></tr>
+          <tr class="proposed-row"><td>Proposed</td>   <td><strong>60.60 &plusmn; 4.30</strong></td><td><strong>51.27 &plusmn; 6.60</strong></td><td><strong>46.60 &plusmn; 4.77</strong></td></tr>
         </tbody>
       </table>
     </div>
     <p class="has-text-centered table-caption">
       Results averaged over 360 trials per policy (3 objects &times; 2 throwers &times; 2 backgrounds &times; 30 trials).
+      The <strong>Proposed</strong> model (highlighted) consistently achieves the highest tracking and success rates across all objects in real-world deployment.
     </p>
   </div>
 </section>
