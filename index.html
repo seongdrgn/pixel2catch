@@ -272,10 +272,14 @@
       real robot without fine-tuning, catching three differently shaped objects thrown
       by a human.
     </p>
-    <div class="buttons is-centered" id="demo-buttons">
-      <button class="button is-rounded is-link" data-src="static/videos/chojh_cube.mp4">Cube</button>
-      <button class="button is-rounded is-dark" data-src="static/videos/chojh_L.mp4">L-block</button>
-      <button class="button is-rounded is-dark" data-src="static/videos/chojh_tri.mp4">Triangle</button>
+    <div class="buttons is-centered" id="cond-buttons" style="margin-bottom:0.4rem;">
+      <button class="button is-rounded is-small is-link" data-cond="chojh">Default</button>
+      <button class="button is-rounded is-small is-dark" data-cond="kimsy">Cross-Thrower &amp; Cross-Scene</button>
+    </div>
+    <div class="buttons is-centered" id="obj-buttons">
+      <button class="button is-rounded is-link" data-obj="cube">Cube</button>
+      <button class="button is-rounded is-dark" data-obj="L">L-block</button>
+      <button class="button is-rounded is-dark" data-obj="tri">Triangle</button>
     </div>
     <div class="columns is-centered">
       <div class="column is-three-quarters">
@@ -283,23 +287,45 @@
           <source id="demo-source" src="static/videos/chojh_cube.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
+        <p id="demo-note" class="is-size-7 has-text-grey" style="display:none; margin-top:0.5rem;">
+          * In the cross-thrower / cross-scene results, background pixels are dimmed to better visualize the bounding box tracked by SAM2.
+        </p>
       </div>
     </div>
     <script>
       (function () {
         var player = document.getElementById('demo-player');
         var source = document.getElementById('demo-source');
-        var btns = document.querySelectorAll('#demo-buttons button');
-        btns.forEach(function (btn) {
+        var note = document.getElementById('demo-note');
+        var condBtns = document.querySelectorAll('#cond-buttons button');
+        var objBtns = document.querySelectorAll('#obj-buttons button');
+        var cond = 'chojh', obj = 'cube';
+
+        function setActive(group, active) {
+          group.forEach(function (b) { b.classList.remove('is-link'); b.classList.add('is-dark'); });
+          active.classList.remove('is-dark');
+          active.classList.add('is-link');
+        }
+        function update() {
+          source.setAttribute('src', 'static/videos/' + cond + '_' + obj + '.mp4');
+          player.load();
+          player.play();
+          note.style.display = (cond === 'kimsy') ? 'block' : 'none';
+        }
+        condBtns.forEach(function (btn) {
           btn.addEventListener('click', function () {
-            var src = btn.getAttribute('data-src');
-            if (source.getAttribute('src') === src) return;
-            source.setAttribute('src', src);
-            player.load();
-            player.play();
-            btns.forEach(function (b) { b.classList.remove('is-link'); b.classList.add('is-dark'); });
-            btn.classList.remove('is-dark');
-            btn.classList.add('is-link');
+            if (cond === btn.getAttribute('data-cond')) return;
+            cond = btn.getAttribute('data-cond');
+            setActive(condBtns, btn);
+            update();
+          });
+        });
+        objBtns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            if (obj === btn.getAttribute('data-obj')) return;
+            obj = btn.getAttribute('data-obj');
+            setActive(objBtns, btn);
+            update();
           });
         });
       })();
