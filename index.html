@@ -272,29 +272,38 @@
       real robot without fine-tuning, catching three differently shaped objects thrown
       by a human.
     </p>
-    <div class="columns is-centered video-grid">
-      <div class="column">
-        <h4 class="title is-6 has-text-centered">Cube</h4>
-        <video controls loop muted playsinline preload="metadata" class="demo-video">
-          <source src="static/videos/cube.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="column">
-        <h4 class="title is-6 has-text-centered">L-block</h4>
-        <video controls loop muted playsinline preload="metadata" class="demo-video">
-          <source src="static/videos/L.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="column">
-        <h4 class="title is-6 has-text-centered">Triangle</h4>
-        <video controls loop muted playsinline preload="metadata" class="demo-video">
-          <source src="static/videos/tri.mp4" type="video/mp4">
+    <div class="buttons is-centered" id="demo-buttons">
+      <button class="button is-rounded is-link" data-src="static/videos/chojh_cube.mp4">Cube</button>
+      <button class="button is-rounded is-dark" data-src="static/videos/chojh_L.mp4">L-block</button>
+      <button class="button is-rounded is-dark" data-src="static/videos/chojh_tri.mp4">Triangle</button>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-three-quarters">
+        <video id="demo-player" controls loop muted autoplay playsinline preload="metadata" class="demo-video" style="width:100%;">
+          <source id="demo-source" src="static/videos/chojh_cube.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
     </div>
+    <script>
+      (function () {
+        var player = document.getElementById('demo-player');
+        var source = document.getElementById('demo-source');
+        var btns = document.querySelectorAll('#demo-buttons button');
+        btns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var src = btn.getAttribute('data-src');
+            if (source.getAttribute('src') === src) return;
+            source.setAttribute('src', src);
+            player.load();
+            player.play();
+            btns.forEach(function (b) { b.classList.remove('is-link'); b.classList.add('is-dark'); });
+            btn.classList.remove('is-dark');
+            btn.classList.add('is-link');
+          });
+        });
+      })();
+    </script>
 
     <h3 class="title is-5">Real-World Performance (360 trials per policy)</h3>
     <div class="table-container">
