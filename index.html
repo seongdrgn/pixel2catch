@@ -23,11 +23,31 @@
 
   <!-- Custom -->
   <link rel="stylesheet" href="static/css/style.css">
+
+  <!-- Scroll-reveal animation -->
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+  <noscript><style> .reveal { opacity: 1; transform: none; } </style></noscript>
 </head>
 <body>
 
 <!-- ==================== HERO ==================== -->
-<section class="hero">
+<section class="hero reveal">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
@@ -92,7 +112,7 @@
 </section>
 
 <!-- ==================== TEASER ==================== -->
-<section class="hero teaser">
+<section class="hero teaser reveal">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <img src="static/images/teaser.jpg" alt="Pixel2Catch teaser figure" class="teaser-img">
@@ -106,7 +126,7 @@
 </section>
 
 <!-- ==================== ABSTRACT ==================== -->
-<section class="section">
+<section class="section reveal">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -135,7 +155,7 @@
 </section>
 
 <!-- ==================== VIDEO (Overview, self-hosted) ==================== -->
-<section class="section" id="video">
+<section class="section reveal" id="video">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Overview Video</h2>
     <div class="publication-video">
@@ -151,7 +171,7 @@
 </section>
 
 <!-- ==================== METHOD ==================== -->
-<section class="section" id="method">
+<section class="section reveal" id="method">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Method</h2>
 
@@ -199,7 +219,7 @@
 </section>
 
 <!-- ==================== SIMULATION RESULTS ==================== -->
-<section class="section" id="results-sim">
+<section class="section reveal" id="results-sim">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Simulation Results</h2>
 
@@ -250,7 +270,7 @@
 </section>
 
 <!-- ==================== REAL-WORLD ==================== -->
-<section class="section" id="results-real">
+<section class="section reveal" id="results-real">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Real-World Experiments</h2>
 
@@ -370,7 +390,7 @@
 </section>
 
 <!-- ==================== BIBTEX ==================== -->
-<section class="section" id="bibtex">
+<section class="section reveal" id="bibtex">
   <div class="container is-max-desktop content">
     <h2 class="title is-3">BibTeX</h2>
     <pre><code>@article{kim2026pixel2catch,
@@ -402,6 +422,26 @@
     </div>
   </div>
 </footer>
+
+<!-- Scroll-reveal: fade/slide sections in as they enter the viewport -->
+<script>
+  (function () {
+    var nodes = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      nodes.forEach(function (n) { n.classList.add('visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+    nodes.forEach(function (n) { io.observe(n); });
+  })();
+</script>
 
 </body>
 </html>
