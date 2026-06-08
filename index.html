@@ -328,6 +328,7 @@
           cross = !cross;
           toggle.classList.toggle('is-outlined', !cross);
           toggle.setAttribute('aria-pressed', cross ? 'true' : 'false');
+          toggle.blur();
           update();
         });
       })();
