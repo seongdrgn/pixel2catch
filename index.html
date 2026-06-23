@@ -395,10 +395,13 @@
     <div class="is-flex is-align-items-center is-justify-content-space-between is-flex-wrap-wrap">
       <h2 class="title is-3" style="margin-bottom: 0;">BibTeX</h2>
 
-      <button id="copy-bibtex-btn" class="button is-normal is-rounded is-dark">
-        <span class="icon"><i class="fas fa-copy"></i></span>
-        <span>Copy BibTeX</span>
-      </button>
+      <div>
+        <button id="copy-bibtex-btn" type="button" class="button is-normal is-rounded is-dark">
+          <span class="icon"><i id="copy-bibtex-icon" class="fas fa-copy"></i></span>
+          <span id="copy-bibtex-label">Copy BibTeX</span>
+        </button>
+        <span id="copy-bibtex-status" class="is-size-7 has-text-grey" style="margin-left: 0.5rem;"></span>
+      </div>
     </div>
 
     <pre style="margin-top: 1rem;"><code id="bibtex-code">@article{kim2026pixel2catch,
@@ -447,6 +450,80 @@
       });
     }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
     nodes.forEach(function (n) { io.observe(n); });
+  })();
+</script>
+
+<script>
+  (function () {
+    function setCopyStatus(success, message) {
+      var button = document.getElementById('copy-bibtex-btn');
+      var label = document.getElementById('copy-bibtex-label');
+      var icon = document.getElementById('copy-bibtex-icon');
+      var status = document.getElementById('copy-bibtex-status');
+
+      label.textContent = success ? 'Copied!' : 'Copy failed';
+      status.textContent = message;
+
+      button.classList.remove('is-dark', 'is-success', 'is-danger');
+      button.classList.add(success ? 'is-success' : 'is-danger');
+
+      icon.classList.remove('fa-copy', 'fa-check', 'fa-triangle-exclamation');
+      icon.classList.add(success ? 'fa-check' : 'fa-triangle-exclamation');
+
+      setTimeout(function () {
+        label.textContent = 'Copy BibTeX';
+        status.textContent = '';
+        button.classList.remove('is-success', 'is-danger');
+        button.classList.add('is-dark');
+
+        icon.classList.remove('fa-check', 'fa-triangle-exclamation');
+        icon.classList.add('fa-copy');
+      }, 1800);
+    }
+
+    async function copyToClipboard(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+
+      var textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.top = '-9999px';
+      textarea.style.left = '-9999px';
+
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      textarea.setSelectionRange(0, textarea.value.length);
+
+      var successful = document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      if (!successful) {
+        throw new Error('Fallback copy failed');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var button = document.getElementById('copy-bibtex-btn');
+      var code = document.getElementById('bibtex-code');
+
+      if (!button || !code) return;
+
+      button.addEventListener('click', async function () {
+        var bibtex = code.textContent.trim();
+
+        try {
+          await copyToClipboard(bibtex);
+          setCopyStatus(true, 'BibTeX copied to clipboard.');
+        } catch (error) {
+          setCopyStatus(false, 'Please select and copy the BibTeX manually.');
+        }
+      });
+    });
   })();
 </script>
 
