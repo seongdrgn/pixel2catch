@@ -392,14 +392,21 @@
 <!-- ==================== BIBTEX ==================== -->
 <section class="section reveal" id="bibtex">
   <div class="container is-max-desktop content">
-    <h2 class="title is-3">BibTeX</h2>
-    <pre><code>@article{kim2026pixel2catch,
-  title   = {Pixel2Catch: Multi-Agent Sim-to-Real Transfer for Agile Manipulation
-             with a Single RGB Camera},
-  author  = {Kim, Seongyong and Cho, Junhyeon and Lee, Kang-Won and Lim, Soo-Chul},
-  journal = {IEEE Robotics and Automation Letters},
-  year    = {2026},
-  publisher    = {IEEE}
+    <div class="is-flex is-align-items-center is-justify-content-space-between is-flex-wrap-wrap">
+      <h2 class="title is-3" style="margin-bottom: 0;">BibTeX</h2>
+
+      <button id="copy-bibtex-btn" class="button is-normal is-rounded is-dark">
+        <span class="icon"><i class="fas fa-copy"></i></span>
+        <span>Copy BibTeX</span>
+      </button>
+    </div>
+
+    <pre style="margin-top: 1rem;"><code id="bibtex-code">@article{kim2026pixel2catch,
+  title={Pixel2Catch: Multi-Agent Sim-to-Real Transfer for Agile Manipulation with a Single RGB Camera},
+  author={Kim, Seongyong and Cho, Junhyeon and Lee, Kang-Won and Lim, Soo-Chul},
+  journal={IEEE Robotics and Automation Letters},
+  year={2026},
+  publisher={IEEE}
 }</code></pre>
   </div>
 </section>
